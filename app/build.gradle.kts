@@ -74,5 +74,5 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.svg)
     implementation(libs.kotlinx.coroutines.core)
-
+    implementation(libs.play.services.ads)
 }
