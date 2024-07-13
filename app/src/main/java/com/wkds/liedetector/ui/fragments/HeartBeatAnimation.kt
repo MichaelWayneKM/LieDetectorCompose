@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +32,7 @@ fun HeartBeatAnimation(modifier: Modifier = Modifier) {
         ), label = "progress animation"
     )
 
-    Canvas(modifier = modifier.fillMaxSize()) {
+    Canvas(modifier = modifier.background(color = Color.Transparent).fillMaxSize()) {
         val path = createRealisticHeartbeatPath(size.width, size.height / 2, animatedProgress.value)
 
         drawPath(

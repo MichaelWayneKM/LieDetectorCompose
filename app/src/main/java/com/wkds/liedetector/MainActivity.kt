@@ -13,10 +13,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.wkds.liedetector.data.models.KDetectorResultScreen
 import com.wkds.liedetector.data.models.KDetectorScreen
 import com.wkds.liedetector.data.models.KEnjoySoundScreen
 import com.wkds.liedetector.data.models.KHomeScreen
 import com.wkds.liedetector.data.models.KHomeStartScreen
+import com.wkds.liedetector.ui.screens.DetectorResultScreen
 import com.wkds.liedetector.ui.screens.DetectorScreen
 import com.wkds.liedetector.ui.screens.EnjoySoundScreen
 import com.wkds.liedetector.ui.screens.HomeScreen
@@ -38,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     containerColor = Color.Black
                 ) { innerPadding ->
 
-                    NavHost(navController = navController, startDestination = KDetectorScreen) {
+                    NavHost(navController = navController, startDestination = KDetectorResultScreen) {
                         composable<KHomeScreen> {
                             HomeScreen(navController = navController, modifier = Modifier.padding(innerPadding))
                         }
@@ -53,6 +55,10 @@ class MainActivity : ComponentActivity() {
 
                         composable<KDetectorScreen> {
                             DetectorScreen(navController = navController, modifier = Modifier.padding(innerPadding))
+                        }
+
+                        composable<KDetectorResultScreen> {
+                            DetectorResultScreen(navController = navController, modifier = Modifier.padding(innerPadding))
                         }
                     }
                 }

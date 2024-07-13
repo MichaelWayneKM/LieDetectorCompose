@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,19 +35,7 @@ import com.wkds.liedetector.ui.fragments.PressableScale
 import com.wkds.liedetector.utils.CancellableTimer
 
 @Composable
-fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
-
-    val waitTimer = CancellableTimer()
-    val context = LocalContext.current
-
-    val longPressEcg = stringResource(id = R.string.long_press_ecg)
-
-    var isReadingEcg by remember { mutableStateOf(false) }
-
-    val opacity by animateFloatAsState(
-        targetValue = if (isReadingEcg) 1f else 0f,
-        animationSpec = tween(durationMillis = 300), label = "EGH Opacity transitionSpec"
-    )
+fun DetectorResultScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
 
     Column(
         modifier = modifier.verticalScroll(rememberScrollState()),
@@ -62,14 +51,7 @@ fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostControll
                     contentDescription = "banner"
                 )
 
-                Box(
-                    modifier = Modifier
-                        .offset(y = 30.dp)
-                        .alpha(opacity)
-                        .requiredSize(240.dp)
-                ) {
-                    HeartBeatAnimation()
-                }
+                Text(text = "TRUE")
             }
 
             Image(
@@ -85,40 +67,9 @@ fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostControll
                     .fillMaxWidth()
                     .offset(y = (-30).dp),
                 painter = painterResource(id = R.drawable.banner_button),
-                contentDescription = "banner sub"
+                contentDescription = "banner button"
             )
 
-            PressableScale(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = (-40).dp),
-                onTapDown = {
-                    isReadingEcg = true
-                    waitTimer.waitAndExecute(
-                        delayMillis = 4000L,
-                    ) {
-                        isReadingEcg = false
-                    }
-                },
-                onTapUp = {
-                    if (isReadingEcg) {
-                        Toast.makeText(
-                            context,
-                            longPressEcg,
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        isReadingEcg = false
-                    }
-                }) {
-                Image(
-                    modifier = Modifier
-                        .align(alignment = Alignment.CenterHorizontally)
-                        .fillMaxWidth(),
-                    painter = painterResource(id = R.drawable.fingerprint),
-                    contentDescription = "banner sub"
-                )
-            }
         }
     }
 }

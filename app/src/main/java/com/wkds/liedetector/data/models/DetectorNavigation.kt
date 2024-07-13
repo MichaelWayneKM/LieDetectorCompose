@@ -13,3 +13,6 @@ object KEnjoySoundScreen
 
 @Serializable
 object KDetectorScreen
+
+@Serializable
+object KDetectorResultScreen

@@ -8,4 +8,5 @@
     <string name="start_scanner">Start scanner</string>
     <string name="play_sounds">Play sounds</string>
     <string name="sounds">Sounds</string>
+    <string name="long_press_ecg">Please press the button until the result is displayed.</string>
 </resources>
