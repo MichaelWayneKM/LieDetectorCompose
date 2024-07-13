@@ -5,4 +5,7 @@
     <string name="privacy">Privacy</string>
     <string name="share">Share</string>
     <string name="rate">Rate us</string>
+    <string name="start_scanner">Start scanner</string>
+    <string name="play_sounds">Play sounds</string>
+    <string name="sounds">Sounds</string>
 </resources>

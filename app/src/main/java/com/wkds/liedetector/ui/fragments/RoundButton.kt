@@ -3,6 +3,8 @@ package com.wkds.liedetector.ui.fragments
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,7 +20,7 @@ fun RoundButton(
 ) {
     PressableScale(action = action) {
         Image(
-            modifier = Modifier.size(100.dp),
+            modifier = Modifier.requiredSize(100.dp),
             painter = painterResource(id = imageResource),
             contentDescription = description
         )

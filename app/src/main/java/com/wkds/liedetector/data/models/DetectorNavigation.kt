@@ -1,6 +1,15 @@
 package com.wkds.liedetector.data.models
 
-enum class DetectorNavigation() {
-    Home,
+import kotlinx.serialization.Serializable
 
-}
+@Serializable
+object KHomeScreen
+
+@Serializable
+object KHomeStartScreen
+
+@Serializable
+object KEnjoySoundScreen
+
+@Serializable
+object KDetectorScreen
