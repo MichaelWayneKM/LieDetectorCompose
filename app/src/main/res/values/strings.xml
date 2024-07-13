@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lie Detector</string>
+    <string name="app_name_home_subtext">Play with friends</string>
+    <string name="start_txt">Let\'s start</string>
+    <string name="privacy">Privacy</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate us</string>
+</resources>
