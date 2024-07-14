@@ -3,6 +3,9 @@ package com.wkds.liedetector.data.models
 import kotlinx.serialization.Serializable
 
 @Serializable
+object KSplashScreen
+
+@Serializable
 object KHomeScreen
 
 @Serializable

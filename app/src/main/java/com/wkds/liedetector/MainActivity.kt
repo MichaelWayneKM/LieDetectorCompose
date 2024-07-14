@@ -13,21 +13,29 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.wkds.liedetector.data.models.KDetectorResultScreen
 import com.wkds.liedetector.data.models.KDetectorScreen
 import com.wkds.liedetector.data.models.KEnjoySoundScreen
 import com.wkds.liedetector.data.models.KHomeScreen
 import com.wkds.liedetector.data.models.KHomeStartScreen
+import com.wkds.liedetector.data.models.KSplashScreen
 import com.wkds.liedetector.ui.screens.DetectorResultScreen
 import com.wkds.liedetector.ui.screens.DetectorScreen
 import com.wkds.liedetector.ui.screens.EnjoySoundScreen
 import com.wkds.liedetector.ui.screens.HomeScreen
 import com.wkds.liedetector.ui.screens.HomeStartScreen
+import com.wkds.liedetector.ui.screens.SplashScreen
 import com.wkds.liedetector.ui.theme.LiedetectorTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MobileAds.initialize(this) {}
+        MobileAds.setRequestConfiguration(
+            RequestConfiguration.Builder().setTestDeviceIds(listOf("ABCDEF012345")).build()
+        )
         enableEdgeToEdge()
         setContent {
             LiedetectorTheme {
@@ -40,7 +48,11 @@ class MainActivity : ComponentActivity() {
                     containerColor = Color.Black
                 ) { innerPadding ->
 
-                    NavHost(navController = navController, startDestination = KDetectorResultScreen) {
+                    NavHost(navController = navController, startDestination = KSplashScreen) {
+                        composable<KSplashScreen> {
+                            SplashScreen(navController = navController, modifier = Modifier.padding(innerPadding))
+                        }
+
                         composable<KHomeScreen> {
                             HomeScreen(navController = navController, modifier = Modifier.padding(innerPadding))
                         }

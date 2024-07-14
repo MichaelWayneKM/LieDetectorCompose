@@ -33,6 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
 import com.wkds.liedetector.R
 import com.wkds.liedetector.ui.fragments.CustomAppBar
@@ -40,6 +41,10 @@ import com.wkds.liedetector.ui.fragments.HeartBeatAnimation
 import com.wkds.liedetector.ui.fragments.PressableScale
 import com.wkds.liedetector.utils.CancellableTimer
 import kotlin.random.Random
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.wkds.liedetector.ui.fragments.BannerAdView
 
 @Composable
 fun DetectorResultScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
@@ -63,7 +68,12 @@ fun DetectorResultScreen(modifier: Modifier = Modifier, navController: NavHostCo
                         contentDescription = "banner"
                     )
 
-                    Text(modifier = Modifier.offset(y = 5.dp), text = if (isTruthyResult) "TRUE" else "FALSE", fontSize = 40.sp, fontWeight = FontWeight.ExtraBold)
+                    Text(
+                        modifier = Modifier.offset(y = 5.dp),
+                        text = if (isTruthyResult) "TRUE" else "FALSE",
+                        fontSize = 40.sp,
+                        fontWeight = FontWeight.ExtraBold
+                    )
                 }
 
                 Image(
@@ -76,8 +86,11 @@ fun DetectorResultScreen(modifier: Modifier = Modifier, navController: NavHostCo
 
             }
         }
-        Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 60.dp).background(color = Color.White).fillMaxWidth().height(80.dp)) {
-            Text("Hello")
-        }
+
+        BannerAdView(
+            modifier = Modifier
+                .padding(horizontal = 20.dp, vertical = 60.dp)
+                .fillMaxWidth()
+        )
     }
 }
