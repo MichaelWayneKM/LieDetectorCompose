@@ -14,7 +14,7 @@ Welcome to the Lie Detector app! This app is built using Jetpack Compose and pro
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/MichaelWayneKM/liedetector.git
+git clone https://github.com/MichaelWayneKM/LieDetectorCompose
 ```
 
 2. Open the project in Android Studio.
