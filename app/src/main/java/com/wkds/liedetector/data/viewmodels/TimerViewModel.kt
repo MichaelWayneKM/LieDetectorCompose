@@ -1,17 +1,17 @@
-package com.wkds.liedetector.utils
+package com.wkds.liedetector.data.viewmodels
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class CancellableTimer {
+class TimerViewModel : ViewModel() {
     private var waitJob: Job? = null
 
     fun waitAndExecute(delayMillis: Long, onComplete: () -> Unit) {
-        waitJob = CoroutineScope(Dispatchers.Default).launch {
+        waitJob = viewModelScope.launch {
             try {
                 delay(delayMillis)
                 onComplete()

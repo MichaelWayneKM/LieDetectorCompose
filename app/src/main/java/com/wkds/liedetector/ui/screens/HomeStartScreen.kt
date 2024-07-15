@@ -2,9 +2,7 @@ package com.wkds.liedetector.ui.screens
 
 import android.graphics.Color
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -18,9 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.wkds.liedetector.R
+import com.wkds.liedetector.data.models.KDetectorScreen
 import com.wkds.liedetector.data.models.KEnjoySoundScreen
 import com.wkds.liedetector.ui.fragments.PressableScale
-import com.wkds.liedetector.ui.fragments.RoundButton
 import com.wkds.liedetector.ui.theme.LiedetectorTheme
 
 @Composable
@@ -37,7 +35,7 @@ fun HomeStartScreen(modifier: Modifier = Modifier, navController: NavHostControl
             modifier = Modifier
         )
 
-        PressableScale(action = { /*TODO*/ }) {
+        PressableScale(action = { navController?.navigate(KDetectorScreen) }) {
             Image(
                 modifier = Modifier.padding(bottom = 20.dp),
                 painter = painterResource(id = R.drawable.start_scanner),

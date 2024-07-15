@@ -9,20 +9,23 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun CustomAppBar(modifier: Modifier = Modifier, text: String, navController: NavHostController? = null) {
+fun CustomAppBar(
+    modifier: Modifier = Modifier,
+    text: String? = null,
+    navController: NavHostController? = null,
+) {
     Column(modifier = modifier) {
         IconButton(onClick = { navController?.navigateUp() }) {
             Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "arrow back")
         }
 
-        Text(
+        if (text != null) Text(
             text = text,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center,

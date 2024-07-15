@@ -47,7 +47,7 @@ fun SpinningProgressBar(modifier: Modifier = Modifier) {
         for (i in 0 until count) {
             rotate(degrees = (i * (360 / count)).toFloat()) {
                 drawRoundRect(
-                    color = Color.LightGray.copy(alpha = .7f),
+                    color = Color.LightGray.copy(alpha = .3f),
                     topLeft = Offset(canvasWidth - width, (canvasHeight - height) / 2),
                     size = Size(width, height),
                     cornerRadius = CornerRadius(cornerRadius, cornerRadius)

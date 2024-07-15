@@ -13,6 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.wkds.liedetector.R
+import com.wkds.liedetector.data.models.KSoundScreen
+import com.wkds.liedetector.data.models.KTrimmerScreen
+import com.wkds.liedetector.ui.fragments.BannerAdView
 import com.wkds.liedetector.ui.fragments.CustomAppBar
 import com.wkds.liedetector.ui.fragments.PressableScale
 
@@ -20,7 +23,7 @@ import com.wkds.liedetector.ui.fragments.PressableScale
 fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
     Column(modifier = modifier.padding(horizontal = 8.dp, vertical = 10.dp)) {
 
-        CustomAppBar(text = "Sounds")
+        CustomAppBar(text = "Sounds", navController = navController)
 
         Column(
             modifier = Modifier
@@ -31,7 +34,7 @@ fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostContro
                 (-10).dp
             )
         ) {
-            PressableScale(action = { /*TODO*/ }) {
+            PressableScale(action = { navController?.navigate(KSoundScreen(type = "Animal")) }) {
                 Image(
                     modifier = Modifier.padding(bottom = 20.dp),
                     painter = painterResource(id = R.drawable.animal_sound),
@@ -39,7 +42,7 @@ fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostContro
                 )
             }
 
-            PressableScale(action = { /*TODO*/ }) {
+            PressableScale(action = { navController?.navigate(KSoundScreen(type = "Baby")) }) {
                 Image(
                     modifier = Modifier.padding(bottom = 20.dp),
                     painter = painterResource(id = R.drawable.baby_sound),
@@ -47,7 +50,7 @@ fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostContro
                 )
             }
 
-            PressableScale(action = { /*TODO*/ }) {
+            PressableScale(action = { navController?.navigate(KSoundScreen(type = "Gun")) }) {
                 Image(
                     modifier = Modifier.padding(bottom = 20.dp),
                     painter = painterResource(id = R.drawable.gun_sound),
@@ -55,7 +58,7 @@ fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostContro
                 )
             }
 
-            PressableScale(action = { /*TODO*/ }) {
+            PressableScale(action = { navController?.navigate(KTrimmerScreen) }) {
                 Image(
                     modifier = Modifier.padding(bottom = 20.dp),
                     painter = painterResource(id = R.drawable.trimmer_sound),
@@ -63,6 +66,8 @@ fun EnjoySoundScreen(modifier: Modifier = Modifier, navController: NavHostContro
                 )
             }
         }
+
+        BannerAdView(modifier = Modifier.padding(top = 100.dp))
     }
 }
 

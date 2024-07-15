@@ -19,3 +19,18 @@ object KDetectorScreen
 
 @Serializable
 object KDetectorResultScreen
+
+@Serializable
+object KTrimmerScreen
+
+@Serializable
+data class KSoundScreen (
+    val type: String
+)
+
+@Serializable
+data class KSoundPlayerScreen (
+    val type: String,
+    val imageResId: Int,
+    val audioResId: Int
+)

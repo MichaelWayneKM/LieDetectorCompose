@@ -13,7 +13,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.pointerInput
 
 @Composable
@@ -22,8 +21,8 @@ fun PressableScale(
     scaleFactor: Float = 0.95f,
     animationDuration: Int = 100,
     action: () -> Unit = {},
-    onTapDown: () -> Unit = { Log.d("long_pressed", "Pressable pressed")},
-    onTapUp: () -> Unit = { Log.d("long_pressed_release", "Pressable released")},
+    onTapDown: () -> Unit = { Log.d("long_pressed", "Pressable pressed") },
+    onTapUp: () -> Unit = { Log.d("long_pressed_release", "Pressable released") },
     content: @Composable () -> Unit
 ) {
     var isPressed by remember { mutableStateOf(false) }

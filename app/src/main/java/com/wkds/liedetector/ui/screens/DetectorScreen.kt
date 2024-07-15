@@ -1,6 +1,5 @@
 package com.wkds.liedetector.ui.screens
 
-import android.os.CountDownTimer
 import android.widget.Toast
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -26,18 +25,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.wkds.liedetector.R
+import com.wkds.liedetector.data.models.KDetectorResultScreen
+import com.wkds.liedetector.data.viewmodels.TimerViewModel
 import com.wkds.liedetector.ui.fragments.CustomAppBar
 import com.wkds.liedetector.ui.fragments.HeartBeatAnimation
 import com.wkds.liedetector.ui.fragments.PressableScale
-import com.wkds.liedetector.utils.CancellableTimer
 
 @Composable
 fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
 
-    val waitTimer = CancellableTimer()
+
     val context = LocalContext.current
+    val timerViewModel: TimerViewModel = viewModel()
 
     val longPressEcg = stringResource(id = R.string.long_press_ecg)
 
@@ -52,7 +54,7 @@ fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostControll
         modifier = modifier.verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy((-30).dp)
     ) {
-        CustomAppBar(text = "Detector")
+        CustomAppBar(text = "Detector", navController = navController)
 
         Column(verticalArrangement = Arrangement.spacedBy((-10).dp)) {
             Box(modifier = Modifier.padding(top = 10.dp), contentAlignment = Alignment.Center) {
@@ -94,10 +96,13 @@ fun DetectorScreen(modifier: Modifier = Modifier, navController: NavHostControll
                     .offset(y = (-40).dp),
                 onTapDown = {
                     isReadingEcg = true
-                    waitTimer.waitAndExecute(
+                    timerViewModel.waitAndExecute(
                         delayMillis = 4000L,
                     ) {
                         isReadingEcg = false
+                        timerViewModel.cancel()
+
+                        navController?.navigate(KDetectorResultScreen)
                     }
                 },
                 onTapUp = {
